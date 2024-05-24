@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine Learning Classification Project</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css")}}"
+</head>
+<body>
+    <h1>NBA Championship</h1>
+    <h2>A Machine Learning Project by Zareb Islam, Aadhil Mubarak Syed, Jaynor Singson, Dylan Tran</h2>
+        <p> This model aims to predict the 2024 NBA Championship Team using Machine Learning techniques. </p>
+    <h3> 2024 Predicted Champion: {{pred_champion}}</h3>
+
+    <h2>Championship Probabilities (By Team)</h2>
+    <ul>
+        {% for team_data in probabilities %}
+            <li>{{ team_data["team"] }}: {{ team_data["probability"] }}%</li>
+        {% endfor %}
+    </ul>
+
+        <form method="POST" action="/predict">
+            <label for="input">Enter year:</label>
+            <input type="text" name="input" id="input" required>
+            <br>
+            <button type="submit">Enter</button>
+        </form>
+
+
+
+</body>
+</html>
