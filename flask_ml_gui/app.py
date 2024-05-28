@@ -42,6 +42,9 @@ def predict():
             return "Something went wrong. Please try again."
         df = pd.read_csv(f"../data/{year_input}.csv")
 
+        # get actual champion
+        champion = df[df["Champion"] == 1]["Team"].values[0]
+
         # preprocess data
         new_df = df.drop(columns=["Champion", "Arena", "Team", "Year", "G"])
         X = StandardScaler().fit_transform(new_df)
@@ -56,7 +59,7 @@ def predict():
             team = df.iloc[i]["Team"]
             probability = round(y[i][0] * 100, 2)
             championship_probs.append({"team": team, "probability": probability})
-        return render_template("result.html", pred_champion=predicted_team, probabilities=championship_probs, year=year_input)
+        return render_template("result.html", pred_champion=predicted_team, probabilities=championship_probs, year=year_input, actual_champion=champion)
 
     else:
         return "Something went wrong. Please try again."

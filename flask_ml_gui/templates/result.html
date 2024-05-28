@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Machine Learning Classification Project</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css")}}"
 </head>
 <body>
-    <h3> {{year}} Predicted Champion: {{pred_champion}}</h3>
-
-    <h2>Championship Probabilities (By Team)</h2>
-    <ul>
+    <div class="prediction">
+        <h2> {{year}} Predicted Champion: {{pred_champion}}</h2>
+        <h2> {{year}} Actual Champion: {{actual_champion}}</h2>
+    </div>
+    
+    <h3>Model Probabilities (By Team)</h3>
+    <ul class="no-bullets">
         {% for team_data in probabilities %}
             <li>{{ team_data["team"] }}: {{ team_data["probability"] }}%</li>
         {% endfor %}
     </ul>
-
-        <form method="POST" action="/predict">
-            <label for="input">Enter year:</label>
-            <input type="text" name="input" id="input" required>
-            <br>
-            <button type="submit">Enter</button>
-        </form>
-
-        
-
-
-
+    
+    <form method="POST" action="/predict">
+        <label for="input">Enter year (1994 to 2023):</label>
+        <input type="number" name="input" id="input" required min="1994" max="2023">
+        <br>
+        <button type="submit">Enter</button>
+    </form> 
+    
 </body>
 </html>
