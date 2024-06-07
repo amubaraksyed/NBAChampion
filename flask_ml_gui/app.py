@@ -13,25 +13,31 @@ model = load_model(path)
 
 
 @app.route("/")
-def index():
-    # load data
-    df = pd.read_csv(f"../data/2024.csv")
+def home():
+    return render_template("home.html")
 
-    # preprocess data
-    new_df = df.drop(columns=["Champion", "Arena", "Team", "Year", "G"])
-    X = StandardScaler().fit_transform(new_df)
+@app.route("/index", methods=["POST"])
+def predict2024():
+    if request.method == "POST":
+        # load data
+        df = pd.read_csv(f"../data/2024.csv")
 
-    # extract prediction
-    y = model.predict(X)
-    predicted_team = df.iloc[np.argmax(y)]["Team"]
+        # preprocess data
+        new_df = df.drop(columns=["Champion", "Arena", "Team", "Year", "G"])
+        X = StandardScaler().fit_transform(new_df)
 
-    # get all championship probabilites
-    championship_probs = []
-    for i in range(len(y)):
-        team = df.iloc[i]["Team"]
-        probability = round(y[i][0] * 100, 2)
-        championship_probs.append({"team": team, "probability": probability})
-    return render_template("index.html", pred_champion=predicted_team, probabilities=championship_probs)
+        # extract prediction
+        y = model.predict(X)
+        predicted_team = df.iloc[np.argmax(y)]["Team"]
+
+        # get all championship probabilites
+        championship_probs = []
+        for i in range(len(y)):
+            team = df.iloc[i]["Team"]
+            probability = round(y[i][0] * 100, 2)
+            championship_probs.append({"team": team, "probability": probability})
+        return render_template("index.html", pred_champion=predicted_team, probabilities=championship_probs)
+    
 
 @app.route("/predict", methods=["POST"])
 def predict():

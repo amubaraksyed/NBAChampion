@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="{{ url_for("static", filename="style.css")}}"
 </head>
 <body>
+    <div class="title">
+        <h1>NBA Championship {{year}}</h1>
+        <p>A machine learning project by Zareb Islam, Aadhil Mubarak Syed, Jaynor Singson, Dylan Tran</p>
+    </div>
+
     <div class="prediction">
         <h2> {{year}} Predicted Champion: {{pred_champion}}</h2>
         <h2> {{year}} Actual Champion: {{actual_champion}}</h2>
@@ -17,13 +22,27 @@
             <li>{{ team_data["team"] }}: {{ team_data["probability"] }}%</li>
         {% endfor %}
     </ul>
-    
+    <br>
+    <p>Enter a year (1994 to 2023) below to view another historical prediction:</p>
     <form method="POST" action="/predict">
-        <label for="input">Enter year (1994 to 2023):</label>
+        <!-- <label for="input">Enter year (1994 to 2023):</label> -->
         <input type="number" name="input" id="input" required min="1994" max="2023">
+        <br>
         <br>
         <button type="submit">Enter</button>
     </form> 
+    <br>
+    <p> Or, see the model's 2024 prediction </p>
+    <form method="POST" action="/index">
+        <!-- <label for="input">Enter year (1994 to 2023):</label>
+        <input type="number" name="input" id="input" required min="1994" max="2023">
+        <br> -->
+        <button type="submit">Predict 2024 NBA Championship</button>
+    </form> 
+
+    <div class="copyright">
+        <p> &copy Jaynor Singson 2024, all rights reserved </p>
+    </div>
     
 </body>
 </html>

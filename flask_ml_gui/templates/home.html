@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine Learning Classification Project</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css")}}"
+</head>
+<body>
+    <div class="title">
+        <h1>NBA Championship 2024</h1>
+        <p>A machine learning project by Zareb Islam, Aadhil Mubarak Syed, Jaynor Singson, Dylan Tran</p>
+    </div>
+
+    
+
+    <div class="home-button">
+        <p>Click here to predict the 2024 NBA Champion</p>
+        <form method="POST" action="/index">
+            <!-- <label for="input">Enter year (1994 to 2023):</label>
+            <input type="number" name="input" id="input" required min="1994" max="2023">
+            <br> -->
+            <button type="submit">Predict 2024 NBA Champion</button>
+        </form> 
+    </div>
+    
+
+    <div class="home-button">
+        <p>Or, see the model's historical predictions:</p>
+        <form method="POST" action="/predict">
+            <label for="input">Enter year (1994 to 2023):</label>
+            <br>
+            <br>
+            <input type="number" name="input" id="input" required min="1994" max="2023">
+            <br>
+            <br>
+            <button type="submit">Get historical prediction</button>
+        </form> 
+    </div>
+
+    <div class="copyright">
+        <p> &copy Jaynor Singson 2024, all rights reserved </p>
+    </div>
+    
+</body>
+</html>

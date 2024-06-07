@@ -5,7 +5,7 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    text-align:;
+    text-align: center;
 }
 
 .prediction {
@@ -24,4 +24,21 @@ input {
     background-color: darkgrey;
     width: 10%;
     color: black;
+}
+
+.home-button {
+    margin-top: 75px;
+    margin-bottom: 75px;
+    line-height: 1;
+}
+
+.copyright {
+    margin-top: 50px;
+    text-align: center;
+    bottom: 0px;
+    font-size: 12px;
+}
+
+.title {
+    margin-top: 75px;
 }
