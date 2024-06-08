@@ -16,7 +16,7 @@
         <h2> {{year}} Actual Champion: {{actual_champion}}</h2>
     </div>
     
-    <h3>Model Probabilities (By Team)</h3>
+    <h3>Championship Likelihood (By Team)</h3>
     <ul class="no-bullets">
         {% for team_data in probabilities %}
             <li>{{ team_data["team"] }}: {{ team_data["probability"] }}%</li>
